@@ -79,6 +79,12 @@ module.exports = {
         return options
       })
       .end()
+    config.module
+      .rule('bpmn')
+      .test(/\.bpmn$/)
+      .use('raw-loader')
+      .loader('raw-loader')
+      .end()
 
     config
     // https://webpack.js.org/configuration/devtool/#development

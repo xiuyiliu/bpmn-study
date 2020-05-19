@@ -15,6 +15,13 @@ import router from './router'
 import '@/icons' // icon
 import '@/permission' // permission control
 
+// bpmn样式
+import 'bpmn-js/dist/assets/diagram-js.css' // 左边工具栏以及编辑节点的样式（左边工具栏外边框框）
+import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css' // 左边工具栏以及编辑节点的样式（左边工具栏图标）
+import 'bpmn-js-properties-panel/dist/assets/bpmn-js-properties-panel.css' // 官方扩展属性面板样式
+// 自定义bpmn养海参
+import '@/styles/custom/custom-bpmn.css'
+
 /**
  * If you don't want to use mock-server
  * you want to use MockJs for mock api

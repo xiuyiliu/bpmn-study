@@ -78,19 +78,6 @@ export const constantRoutes = [
   },
 
   {
-    path: '/form',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
-      }
-    ]
-  },
-
-  {
     path: '/nested',
     component: Layout,
     redirect: '/nested/menu1',
@@ -139,11 +126,6 @@ export const constantRoutes = [
             meta: { title: 'Menu1-3' }
           }
         ]
-      },
-      {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        meta: { title: 'menu2' }
       }
     ]
   },
@@ -155,6 +137,30 @@ export const constantRoutes = [
       {
         path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
         meta: { title: 'External Link', icon: 'link' }
+      }
+    ]
+  },
+  {
+    path: '/bpmn',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Bpmn',
+        component: () => import('@/views/bpmn/index'),
+        meta: { title: 'bpmn', icon: 'form' }
+      }
+    ]
+  },
+  {
+    path: '/workflow',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Workflow',
+        component: () => import('@/views/workflow/index'),
+        meta: { title: 'workflow', icon: 'form' }
       }
     ]
   },

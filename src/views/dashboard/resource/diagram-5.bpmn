@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="Process_1" isExecutable="false">
+    <bpmn:startEvent id="StartEvent_1" name="开始">
+      <bpmn:outgoing>Flow_1pxyfci</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1pxyfci" sourceRef="StartEvent_1" targetRef="Activity_18sp7pz" />
+    <bpmn:task id="Activity_1jkxt67" name="审批" mode="2" type="上海,广州">
+      <bpmn:extensionElements>
+        <camunda:properties>
+          <camunda:property name="mode" value="抢占" />
+          <camunda:property name="type" value="同意,不同意" />
+          <camunda:property />
+        </camunda:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0iu6lfy</bpmn:incoming>
+      <bpmn:outgoing>Flow_1e917zq</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0x7tkoz</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="Event_0v9lffh" name="结束">
+      <bpmn:incoming>Flow_1e917zq</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1e917zq" name="通过" sourceRef="Activity_1jkxt67" targetRef="Event_0v9lffh" />
+    <bpmn:sequenceFlow id="Flow_0x7tkoz" name="不通过" sourceRef="Activity_1jkxt67" targetRef="Activity_18sp7pz" />
+    <bpmn:sequenceFlow id="Flow_0iu6lfy" sourceRef="Activity_18sp7pz" targetRef="Activity_1jkxt67">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">6</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:userTask id="Activity_18sp7pz" name="发起申请" camunda:formKey="ssa" camunda:assignee="Tony">
+      <bpmn:documentation>需请假的员工需要发起申请</bpmn:documentation>
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="FormField_0bqfp0l" label="是否显示附件" type="boolean" defaultValue="true" />
+        </camunda:formData>
+        <camunda:properties>
+          <camunda:property name="执行人" value="自由选择" />
+        </camunda:properties>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1pxyfci</bpmn:incoming>
+      <bpmn:incoming>Flow_0x7tkoz</bpmn:incoming>
+      <bpmn:outgoing>Flow_0iu6lfy</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
+      <bpmndi:BPMNEdge id="Flow_0iu6lfy_di" bpmnElement="Flow_0iu6lfy">
+        <di:waypoint x="430" y="120" />
+        <di:waypoint x="480" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0x7tkoz_di" bpmnElement="Flow_0x7tkoz">
+        <di:waypoint x="530" y="160" />
+        <di:waypoint x="530" y="220" />
+        <di:waypoint x="350" y="220" />
+        <di:waypoint x="350" y="160" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="424" y="202" width="33" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1e917zq_di" bpmnElement="Flow_1e917zq">
+        <di:waypoint x="580" y="120" />
+        <di:waypoint x="682" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="620" y="102" width="22" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1pxyfci_di" bpmnElement="Flow_1pxyfci">
+        <di:waypoint x="209" y="120" />
+        <di:waypoint x="330" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="173" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="180" y="145" width="22" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1jkxt67_di" bpmnElement="Activity_1jkxt67">
+        <dc:Bounds x="480" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0v9lffh_di" bpmnElement="Event_0v9lffh">
+        <dc:Bounds x="682" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="689" y="145" width="22" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0mhy698_di" bpmnElement="Activity_18sp7pz" bioc:stroke="green" bioc:fill="yellow">
+        <dc:Bounds x="330" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

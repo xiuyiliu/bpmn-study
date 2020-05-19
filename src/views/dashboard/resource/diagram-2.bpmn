@@ -1,0 +1,38 @@
+ <process id="exclusiveGateway" name="BPMN2 Example exclusive gateway">
+
+    <startEvent id="start" />
+
+   <sequenceFlow id="flow1" name="fromStartToExclusiveGateway"
+      sourceRef="start" targetRef="decideBasedOnAmountGateway" />
+
+//定义网关
+   <exclusiveGateway id="decideBasedOnAmountGateway" name="decideBasedOnAmount" />
+//第一个分支
+   <sequenceFlow id="flow2" name="fromGatewayToEndNotEnough"
+      sourceRef="decideBasedOnAmountGateway" targetRef="endNotEnough">
+      <conditionExpression xsi:type="tFormalExpression">
+        ${amount < 100}
+      </conditionExpression>
+   </sequenceFlow>
+//第二个分支
+   <sequenceFlow id="flow3" name="fromGatewayToEnEnough"
+      sourceRef="decideBasedOnAmountGateway" targetRef="endEnough">
+      <conditionExpression xsi:type="tFormalExpression">
+        ${amount <= 500 && amount >= 100}
+        </conditionExpression>
+   </sequenceFlow>
+//第三个分支
+   <sequenceFlow id="flow4" name="fromGatewayToMoreThanEnough"
+      sourceRef="decideBasedOnAmountGateway" targetRef="endMoreThanEnough">
+      <conditionExpression xsi:type="tFormalExpression">
+        ${amount > 500}
+      </conditionExpression>
+   </sequenceFlow>
+
+   <endEvent id="endNotEnough" name="not enough" />
+
+   <endEvent id="endEnough" name="enough" />
+
+   <endEvent id="endMoreThanEnough" name="more than enough" />
+
+  </process>

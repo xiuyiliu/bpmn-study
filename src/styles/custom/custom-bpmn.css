@@ -1,0 +1,7 @@
+/*custom-palette*/
+.bpmn-icon-task.red {
+  color: #cc0000 !important;
+}
+.djs-context-pad .delay-task {
+  background: hotpink;
+}
