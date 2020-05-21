@@ -153,6 +153,18 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/custom-bpmn',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'CustomBpmn',
+        component: () => import('@/views/custom-bpmn/index'),
+        meta: { title: 'custom-bpmn', icon: 'form' }
+      }
+    ]
+  },
+  {
     path: '/workflow',
     component: Layout,
     children: [

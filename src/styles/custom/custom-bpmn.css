@@ -1,7 +1,33 @@
-/*custom-palette*/
+/*custom-modeler-palette*/
 .bpmn-icon-task.red {
   color: #cc0000 !important;
 }
 .djs-context-pad .delay-task {
   background: hotpink;
+}
+
+ul li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.palette-group-title {
+  background: #f8f8f8;
+  padding: 10px;
+}
+.palette-entries {
+  padding: 0;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.palette-entries {
+  padding: 10px 0;
+}
+.palette-entry {
+  padding: 6px 10px;
+  background: #f8f8f8;
+  border: 1px solid #f8f8f8;
+  border-radius: 4px;
+  margin: 2px;
 }

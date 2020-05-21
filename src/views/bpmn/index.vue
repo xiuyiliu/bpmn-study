@@ -3,7 +3,9 @@
     <div>
       <el-button type="primary" size="mini" @click="handleUndo">后退</el-button>
       <el-button type="success" size="mini" @click="handleRedo">前进</el-button>
+      <el-button type="success" size="mini" @click="handleCommandStack">指令栈测试</el-button>
       <el-button type="warning" size="mini" @click="handleDownload">下载</el-button>
+      <el-button type="warning" size="mini" @click="print">打印</el-button>
       <el-upload
         style="display: inline-block;"
         :file-list="fileList"
@@ -15,7 +17,7 @@
         :on-remove="handleRemove"
         :before-remove="beforeRemove"
       >
-        <el-button type="danger" size="mini" @click="print">打印</el-button>
+        <el-button type="danger" size="mini">上传</el-button>
       </el-upload>
     </div>
     <div id="canvas"></div>
@@ -45,7 +47,7 @@ export default {
       currentElement: {}
     }
   },
-  mounted() {
+  async mounted() {
     const customTranslateModule = {
       translate: ['value', customTranslate]
     }
@@ -67,6 +69,13 @@ export default {
     })
     this.showChart()
     this.modelerListener()
+    console.log(this.bpmnModeler)
+    // 尝试
+    // this.bpmnModeler.createDiagram(function(err) {
+    //   if (!err) {
+    //     console.log('调用原型链上的createDiagram')
+    //   }
+    // })
   },
   methods: {
     // 后退
@@ -76,6 +85,9 @@ export default {
     // 前进
     handleRedo() {
       this.bpmnModeler.get('commandStack').redo()
+    },
+    handleCommandStack() {
+      console.log(this.bpmnModeler.getDefinitions())
     },
     // 下载
     handleDownload() {

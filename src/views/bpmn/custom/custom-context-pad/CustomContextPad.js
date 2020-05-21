@@ -32,7 +32,7 @@ export default class CustomContextPad {
     return {
       'append.delay-task': {
         group: 'model',
-        className: 'icon-custom delay-task',
+        className: 'icon-custom-modeler delay-task',
         title: translate('创建一个类型为delay-task的任务节点'),
         action: {
           click: appendTask,
